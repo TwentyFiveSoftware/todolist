@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,700;1,600&display=swap');
+
+:root {
+    --color-background: #1F1F1F;
+    --color-header: #282828;
+    --color-header-icon: #FFFFFF;
+    --color-button: #808080;
+    --color-text: #FFFFFFDE;
+    --color-divider: #FFFFFF25;
+    --color-accent: #DE4C4A;
+    --color-input: #171717;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: 'Nunito', sans-serif;
+}
+
+html {
+    font-size: 10px;
+}
+
+body {
+    min-height: 100vh;
+    position: relative;
+    background-color: var(--color-background);
+}
+
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content {
+        width: 100%;
+        max-width: 80rem;
+        position: relative;
+        padding-top: 5rem;
+    }
+}
+
+.header {
+    height: 5rem;
+    width: 100%;
+    background-color: var(--color-header);
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 5rem;
+    align-items: center;
+    position: relative;
+
+    img {
+        height: 100%;
+        overflow: hidden;
+        user-select: none;
+    }
+
+    &__icon {
+        color: var(--color-header-icon);
+        font-size: 1.5rem;
+        cursor: pointer;
+        opacity: 0.85;
+    }
+}
+
+.list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.todo {
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: 2rem 1fr 1.7rem;
+    column-gap: 1.5rem;
+    padding: 1rem 0.2rem;
+    border-bottom: 0.1rem solid var(--color-divider);
+
+    &:hover {
+        .todo__delete {
+            opacity: 1;
+        }
+    }
+
+    &__checkbox {
+        width: 2rem;
+        height: 2rem;
+        border: 0.1rem solid var(--color-button);
+        border-radius: 50%;
+        cursor: pointer;
+        display: grid;
+        place-items: center;
+
+        &:hover {
+            border: 0.1rem solid var(--color-accent);
+
+            svg {
+                color: var(--color-accent);
+            }
+        }
+
+        svg {
+            color: var(--color-button);
+            font-size: 0.8rem;
+        }
+
+        &--unchecked svg {
+            display: none;
+        }
+    }
+
+    &__content {
+        font-size: 1.4rem;
+        color: var(--color-text);
+
+        &--checked {
+            text-decoration: line-through;
+        }
+    }
+
+    &__delete {
+        font-size: 1.7rem;
+        color: var(--color-button);
+        cursor: pointer;
+        opacity: 0;
+        transition: color 0.25s;
+
+        &:hover {
+            color: var(--color-accent);
+        }
+    }
+}
+
+.add-todo {
+    font-size: 1.4rem;
+    color: var(--color-button);
+    user-select: none;
+    cursor: pointer;
+    transition: color 0.25s;
+
+    &:hover {
+        color: var(--color-accent);
+    }
+
+    svg {
+        color: var(--color-accent);
+        margin-right: 0.5rem;
+        font-size: 1.3rem;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 1rem 2rem;
+        background-color: var(--color-input);
+        border: none;
+        border-radius: 0.25rem;
+        outline: none;
+        color: var(--color-text);
+    }
+
+    &__buttons {
+        margin-top: 1.5rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.button {
+    font-size: 1.4rem;
+    color: var(--color-text);
+    background-color: var(--color-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    &--disabled {
+        opacity: 0.25;
+    }
+
+    &--secondary {
+        background: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.google-button {
+    width: max-content;
+    margin: 5rem auto auto;
+
+    font-size: 1.5rem;
+    color: var(--color-text);
+    background-color: var(--color-accent);
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+
+    svg {
+        margin-right: 1.2rem;
+    }
+}
