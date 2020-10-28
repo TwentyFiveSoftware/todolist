@@ -19,7 +19,7 @@ const App = () => {
         firebase.firestore().collection('todos').doc(todoId).delete();
 
     const addTodo = content =>
-        firebase.firestore().collection('todos').add({checked: false, content, timestamp: Date.now()});
+        firebase.firestore().collection('todos').add({checked: false, content, timestamp: Date.now(), userId: user.uid});
 
     const signIn = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
@@ -40,7 +40,7 @@ const App = () => {
                 {user !== null &&
                 <Route path={'/'} exact={true}>
                     <HomePage
-                        todoList={value === undefined ? [] : value.docs.map(doc => ({id: doc.id, ...doc.data()}))}
+                        todoList={value === undefined ? [] : value.docs.map(doc => ({id: doc.id, ...doc.data()})).filter(todo => todo.userId === user.uid)}
                         toggleChecked={toggleChecked}
                         deleteTodo={deleteTodo}
                         addTodo={addTodo}
